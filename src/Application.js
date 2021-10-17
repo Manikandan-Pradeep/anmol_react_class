@@ -56,7 +56,7 @@ class Application extends Component {
                     </div>
                 </OwnerSection>
 
-                <SetStateExplained/>
+                <SetStateExplained name={this.state.name}/>
 
                 <button onClick={this.clickHandler}>Click here</button>
             </div>

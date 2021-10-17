@@ -5,21 +5,23 @@ class StateExplanation extends Component {
         super()
         this.state = {
             count: 0,
-            name: 'Manikandan'
+            name: 'Manikandan',
+            list: ['Item1', 'Item2']
         }
+        // this.boundHandler = this.clickHandler.bind(this)
     }
 
     increment = () => {
         // --- Batching of setStates
         // this.setState({
-        //     count: 1
+        //     count: 1,
+        //     name: 'Manikandan'
         // })
         // this.setState({
-        //     name: 'Anmol',
-        //     count: 2
+        //     name: 'Anmol'
         // })
         // this.setState({
-        //     count: 2,
+        //     count: 1,
         //     name: 'Anmol'
         // })
 
@@ -34,6 +36,28 @@ class StateExplanation extends Component {
         //     count: this.state.count + 1
         // }, () => {
         //     console.log(this.state.count)
+        // })
+
+        // --- Third way of using setState is through passing a function - to bypass batching of setState
+        // this.setState((currState) => {
+        //     return {
+        //         count: currState.count + 1
+        //     }
+        // })
+        // this.setState((currState) => {
+        //     return {
+        //         count: currState.count + 1
+        //     }
+        // })
+        // this.setState((currState) => {
+        //     return {
+        //         count: currState.count + 1
+        //     }
+        // })
+        // this.setState((currState) => {
+        //     return {
+        //         count: currState.count + 1
+        //     }
         // })
 
         // ---- Synchronous/Asynchronous Explanation
@@ -59,11 +83,18 @@ class StateExplanation extends Component {
         // }
     }
 
+    clickHandler = () => {
+        // this.setState({
+        //     count: 100
+        // })
+    }
+
     render() {
         return (
             <div className="counterContainer">
                 <div className="counter">{this.state.count}</div>
-                <button onClick={this.increment}>Increment</button>
+                {/* <button onClick={this.boundHandler}>Increment</button> */}
+                <button onClick={this.clickHandler}>Increment</button>
             </div>
         )
     }

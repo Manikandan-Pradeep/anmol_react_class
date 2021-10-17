@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import { Child, Child2 } from './Export'
+import Section from './Section'
 
 class App extends Component {
   render = () => {
@@ -14,6 +15,7 @@ class App extends Component {
             This is a Parent
             <Child></Child>
           </div>
+          <Section name="Ramu"/>
         </>
       // React.createElement('div', {className: 'asdknasdl'}, (
       //   React.createElement(Child, null, 'This is Child' )
