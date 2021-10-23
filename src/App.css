@@ -1,33 +1,11 @@
+.appContainer {
+    margin: 20px;
+    background-color: darkgrey;
+    height: 500px;
+    width: 500px;
+}
+
 .parentContainer {
     margin: 20px;
-}
-
-.listItem {
-    font-size: 24px;
-    color: rgb(73, 181, 231);
-}
-
-.input {
-    height: 30px;
-    margin-top: 20px;
-}
-
-.btn {
-    border: none;
-    margin-top: 20px;
-    height: 30px;
-    outline: none;
-    color: white;
-    background-color: midnightblue;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.itemContainer {
-    display: flex;
-}
-
-.itembtn {
-    margin-top: 0;
-    margin-left: 16px
+    background-color: goldenrod;
 }

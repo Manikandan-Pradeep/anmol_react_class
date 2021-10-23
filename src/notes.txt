@@ -1,0 +1,17 @@
+// Mounting Phase
+constructor() -> Start
+static getDerivedStateFromProps(props, state) -> Update state based on props (does not trigger an updating phase eventhough state is changed). Should return an object which replaces your state
+render() -> Rendering(i.e, virtual DOM updates are going to real DOM). Returns JSX
+componentDidMount() -> Real DOM got the component JSX
+
+// Updating Phase
+static getDerivedStateFromProps(props, state) -> Update state based on props (does not trigger an updating phase eventhough state is changed). Should return an object which replaces your state
+shouldComponentUpdate(prevProps, prevState) -> Executes the logic present inside and determine whether the updating phase has to continue or not. Should always return a boolean. true means continue the phase, false means stop the phase
+getSnapshotBeforeUpdate(prevProps, prevState) -> Get called when your component before JSX updates goes from virtual DOM to real DOM. Return an any object which will be supplied to componentDidUpdate()
+render() -> Rendering(i.e, virtual DOM updates are going to real DOM). Returns JSX
+componentDidUpdate(props, state, snapshot) -> Gets called once the virtual DOM updates gets placed into the real DOM
+
+
+// Unmounting Phase
+
+// Error Phase
