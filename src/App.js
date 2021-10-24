@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import Parent from './ParentComponent'
+import Child from './ParentComponent'
 
 class App extends Component {
 
   constructor(){
     super()
     this.state = {
-      ages : [10,20,50,70]
+      ages : [10,20,50,70],
+      isDestroy: false
     }
     console.log('Mounting Start App')
   }
@@ -41,16 +42,29 @@ class App extends Component {
     })
   }
 
+  destroy = () => {
+    this.setState({
+      isDestroy: !this.state.isDestroy
+    })
+  }
 
   render = () => {
     console.log('Render App')
     return (
       <div className="appContainer">
-        <Parent age={this.state.ages[0]}/>
-        <Parent age={this.state.ages[1]}/>
-        <Parent age={this.state.ages[2]}/>
-        <Parent age={this.state.ages[3]}/>
+        {
+          !this.state.isDestroy ? (
+            <>
+              <Child age={this.state.ages[0]}/>
+            </>
+          ) :
+          null
+        }
+        <Child age={this.state.ages[1]}/>
+        <Child age={this.state.ages[2]}/>
+        <Child age={this.state.ages[3]}/>
         <button onClick={this.clickHandler}>Change Ages</button>
+        <button onClick={this.destroy}>Destroy</button>
       </div>
     )
   }

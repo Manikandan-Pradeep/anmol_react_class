@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import AnotherComponent from './AnotherComponent'
 
 class ParentComponent extends Component {
     constructor(props){
@@ -15,7 +16,9 @@ class ParentComponent extends Component {
         this.state = {
             name: '',
             age: props.age,
-            difference: false
+            difference: false,
+            isComponentCrashed: false,
+            removeAnother: false
         }
         console.log('Mounting Start Parent')
     }
@@ -49,9 +52,9 @@ class ParentComponent extends Component {
 
     componentDidMount() {
         console.log('Mounting Parent Done')
-        this.setState({
-            name: 'Anmol'
-        })
+        // this.setState({
+        //     name: 'Anmol'
+        // })
     }
 
     componentDidUpdate(prop, state, snapshot) {
@@ -61,13 +64,39 @@ class ParentComponent extends Component {
             })
         }
     }
+
+    componentWillUnmount() {
+        console.log('Unmounting')
+    }
     
+    componentDidCatch() {
+        console.log('Catch')
+    }
+
+    static getDerivedStateFromError() {
+        return {
+            isComponentCrashed : true
+        }
+    }
+
+    destroyAnotherComponent = () => {
+        this.setState({
+            removeAnother: true
+        })
+    }
+
     render() {
         console.log('Render Parent')
-        return (
+        return this.state.isComponentCrashed ? (
+            <div>
+                Sorry! This component was crashed!
+            </div>
+        ) : (
             <div className="parentContainer">
                 From Parent - {this.state.name} {this.props.age}
                 {this.state.difference ? <div>OverDifference</div> : null}
+                {this.state.removeAnother ? null : <AnotherComponent/>}
+                <button onClick={this.destroyAnotherComponent}>Destroy Another Component</button>
             </div>
         )
     }

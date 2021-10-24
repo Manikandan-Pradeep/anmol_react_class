@@ -11,7 +11,9 @@ getSnapshotBeforeUpdate(prevProps, prevState) -> Get called when your component 
 render() -> Rendering(i.e, virtual DOM updates are going to real DOM). Returns JSX
 componentDidUpdate(props, state, snapshot) -> Gets called once the virtual DOM updates gets placed into the real DOM
 
-
 // Unmounting Phase
+componentWillUnmount() -> Gets called when your component JSX leaves the original DOM
 
 // Error Phase
+static getDerivedStateFromError() -> Use this method if you want to perform a fallback UI. Should return an object will be merged with the state
+componentDidCatch() -> Use this method only if you want to notify about the error
