@@ -1,0 +1,7 @@
+// didMount - Call APIs and Subscriptions here, setState based on API data should only be done here..
+// didUpdate - Call Only Update APIs or Delete APIs here, do not use setState here...
+
+// shouldComponentUpdate - Control the updating phase of a component, always receives currentProp, currentState. Use these to write conditional logics
+// getDerivedStateFromProps - Whenever you want to change your state value based on your prop change, use this lifecycle, this should always return an obj which will be set as the state
+
+// componentWillUnmount - Remove listeners/ Unsubscribe any subscriptions you have

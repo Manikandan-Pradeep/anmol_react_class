@@ -1,17 +1,25 @@
-.section {
-    padding-left: 20px;
-    font-size: 16px;
-    margin: 20px 0;
+.appContainer {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkslategrey;
 }
 
-.counter {
-    margin: 40px;
-    color: blueviolet;
-    font-size: 24px;
-    font-weight: 700
+.childContainer {
+    padding: 10px;
+    margin: 0 8px;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.counterContainer {
-    margin: 20px 0;
-    padding-left: 20px;
+.item {
+    margin-top: 10px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
 }
