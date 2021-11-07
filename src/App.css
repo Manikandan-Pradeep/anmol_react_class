@@ -1,17 +1,21 @@
-.section {
-    padding-left: 20px;
-    font-size: 16px;
-    margin: 20px 0;
+.appContainer {
+    height: 100vh;
+    width: 100vw;
+    background-color: darkslategrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.counter {
-    margin: 40px;
-    color: blueviolet;
-    font-size: 24px;
-    font-weight: 700
+.wrapper {
+    background-color: gold;
+    padding: 24px;
 }
 
-.counterContainer {
-    margin: 20px 0;
-    padding-left: 20px;
+.wrapper input {
+    padding: 10px;
+}
+
+.wrapper button {
+    padding: 10px;
 }

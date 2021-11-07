@@ -1,23 +1,59 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, createRef } from 'react';
 import './App.css';
-import { Child, Child2 } from './Export'
+import Child from './Child'
 
 class App extends Component {
-  render = () => {
+
+  constructor(props) {
+    super(props)
+    this.reference = createRef()
+    this.sample = null
+    this.childRef = null
+  }
+
+  componentDidMount() {
+    if(this.reference.current) {
+      this.reference.current.value = 'Name of a state'
+      this.reference.current.focus()
+      }
+    if(this.sample) {
+      this.sample.value = 'Second Method Ref'
+      this.sample.focus()
+      this.sample.onclick = (e) => {
+        console.log('Clicked this from handling ref')
+      }
+    }
+
+
+    if(this.childRef){
+      // console.log(this.childRef.name)
+      // this.childRef.printThis('Random string')
+      this.childRef.focus()
+    }
+    
+    
+  }
+
+  assignRef = (nodalValue) => {
+    this.sample = nodalValue
+  }
+
+  render() {
     return (
-        <>
-          <div className="asdknasdl">
-            This is a Parent
-            <Child></Child>
-          </div>
-          <div className="asdknasdl">
-            This is a Parent
-            <Child></Child>
-          </div>
-        </>
-      // React.createElement('div', {className: 'asdknasdl'}, (
-      //   React.createElement(Child, null, 'This is Child' )
-      // ))
+      <div className="appContainer">
+        <div className="wrapper">
+          <h1>Title</h1>
+          <input id="12312" ref={this.reference}></input>
+          <input ref={this.assignRef} onClick={(e) => console.log('Clicked this from inline handling')}></input>
+          <button>Click me</button>
+          <Child name="Manikandan" ref={(node) => {
+            this.childRef = node
+          }}/>
+          <Child name="Anmol" ref={(node) => {
+            this.childRef = node
+          }}/>
+        </div>
+      </div>
     )
   }
 }
