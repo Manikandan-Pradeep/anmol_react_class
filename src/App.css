@@ -1,17 +1,24 @@
-.section {
-    padding-left: 20px;
-    font-size: 16px;
-    margin: 20px 0;
+.appContainer {
+    height: 100vh;
+    width: 100vw;
+    background-color: darkslategrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.counter {
-    margin: 40px;
-    color: blueviolet;
-    font-size: 24px;
-    font-weight: 700
+.wrapper {
+    background-color: gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    flex-direction: column;
 }
 
-.counterContainer {
-    margin: 20px 0;
-    padding-left: 20px;
+.child {
+    background-color: lightcoral;
+    color: white;
+    margin-top: 16px;
+    padding: 8px;
 }

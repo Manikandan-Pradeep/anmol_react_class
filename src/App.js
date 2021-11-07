@@ -1,23 +1,20 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import { Child, Child2 } from './Export'
+import { ChildHover, WithIncrementChildHover, WithIncrementPrintChildHover } from './ChildHover'
+import { ChildClick, WithIncrementChildClick } from './ChildClick'
 
 class App extends Component {
   render = () => {
     return (
-        <>
-          <div className="asdknasdl">
-            This is a Parent
-            <Child></Child>
+        <div className="appContainer">
+          <div className="wrapper">
+            <ChildHover age={25}/>
+            <WithIncrementChildHover age={25} company="infosys" list="due"/>
+            <WithIncrementPrintChildHover age={25}/>
+            <ChildClick/>
+            <WithIncrementChildClick/>
           </div>
-          <div className="asdknasdl">
-            This is a Parent
-            <Child></Child>
-          </div>
-        </>
-      // React.createElement('div', {className: 'asdknasdl'}, (
-      //   React.createElement(Child, null, 'This is Child' )
-      // ))
+        </div>
     )
   }
 }
