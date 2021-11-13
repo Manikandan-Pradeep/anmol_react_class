@@ -1,25 +1,22 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { Child, Child2 } from './Export'
+import StateEffectChild from './StateEffectChild'
+import RefChild from './RefChild'
+import UseCallbackChild from './UseCallbackChild'
 
-class App extends Component {
-  render = () => {
-    return (
-        <>
-          <div className="asdknasdl">
-            This is a Parent
-            <Child></Child>
-          </div>
-          <div className="asdknasdl">
-            This is a Parent
-            <Child></Child>
-          </div>
-        </>
-      // React.createElement('div', {className: 'asdknasdl'}, (
-      //   React.createElement(Child, null, 'This is Child' )
-      // ))
-    )
-  }
+const App = (props) => {
+
+  const [visible, setVisible] = useState(true)
+  const [name, setName] = useState('Anmol')
+
+  return (
+    <div className="appContainer">
+      {/* {visible ? <StateEffectChild name="Ram"/> : null}  */}
+      {/* {visible ? <RefChild name={name}/> : null}  */}
+      {visible ? <UseCallbackChild name="anmol"/> : null} 
+      {/* <button onClick={() => setVisible(!visible)}>Parent Button</button> */}
+    </div>
+  )
 }
 
 export default App;

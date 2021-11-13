@@ -1,17 +1,17 @@
-.section {
-    padding-left: 20px;
-    font-size: 16px;
-    margin: 20px 0;
+.appContainer {
+    height: 100vh;
+    width: 100vw;
+    background-color: cadetblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.counter {
-    margin: 40px;
-    color: blueviolet;
-    font-size: 24px;
-    font-weight: 700
-}
-
-.counterContainer {
-    margin: 20px 0;
-    padding-left: 20px;
+.child {
+    background-color: rgb(255, 234, 113);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    border-radius: 4px;
 }
