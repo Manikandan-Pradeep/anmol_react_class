@@ -6,16 +6,6 @@
     justify-content: center;
     align-items: center;
 }
-
-.wrapper {
-    background-color: gold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-    flex-direction: column;
-}
-
 .child {
     background-color: lightcoral;
     color: white;

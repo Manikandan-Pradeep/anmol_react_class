@@ -1,3 +1,0 @@
-Higher Order Component (HOC)
-
-    -- A Component which takes in another component, provides extra functionalities to it, then returns that component.
