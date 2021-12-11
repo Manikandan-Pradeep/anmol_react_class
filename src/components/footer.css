@@ -1,0 +1,17 @@
+.footer {
+    background: rgb(210, 233, 255);
+    font-size: 24px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.footerlogo {
+    margin-left: 32px;
+}
+
+.footernames {
+    margin-right: 32px;
+    display: flex;
+    gap: 16px
+}

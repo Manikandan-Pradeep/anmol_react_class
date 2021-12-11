@@ -1,0 +1,52 @@
+.page {
+    height: calc(100vh - 160px);
+    background-color: rgba(245, 245, 245, 0.603);
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 7px rgba(214, 214, 214, 0.5);
+}
+
+.cloth > img, .food > img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+}
+
+.cloth > input, .food > input {
+    padding: 8px;
+    outline: none;
+    border: none;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 4px;
+}
+
+.cloth > button, .food > button {
+    padding: 8px;
+    outline: none;
+    border: none;
+    background-color: rgb(173, 143, 255);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    border-radius: 4px;
+    transition: 0.3s all;
+}
+
+.cloth > button:hover, .food > button:hover {
+    background-color: rgb(203, 184, 255);
+    transition: 0.3s all;
+    cursor: pointer;
+}
