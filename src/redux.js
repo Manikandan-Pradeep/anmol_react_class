@@ -1,6 +1,5 @@
 const redux = require('redux')
 const combineReducer = redux.combineReducers
-const logger = require('redux-logger').default
 const applyMiddleWare = redux.applyMiddleware
 
 // Store - Is a storage which keeps all the state of your application
@@ -120,25 +119,52 @@ const finalReducer = combineReducer({
     food: foodCartItemReducer
 })
 
-const store = redux.createStore(finalReducer)
+
+// ---- Custom Middle Wares
+// const customMiddleWare = (store) => {
+//     return (next) => {
+//         return (action) => {
+
+//         }
+//     }
+// }
+
+const customMiddleWare = store => next => action => {
+    console.log(new Date().toISOString())
+
+    console.log('PREV STATE :', store.getState())
+    console.log('ACTION :', action)
+
+    next(action)
+
+    console.log('UPDATED STATE :', store.getState())
+    console.log('--------------------------------')
+}
+
+// const customMiddleWare2 = store => next => action => {
+//     console.log('Custom MiddleWare2', action)
+//     next(action)
+// }
+
+// const store = redux.createStore(finalReducer, redux.applyMiddleware(customMiddleWare, customMiddleWare2))
+const store = redux.createStore(finalReducer, redux.applyMiddleware(customMiddleWare))
 
 // store.getState() -- Current State of the store
 // store.subscribe() -- Let you know if something has changed in the store
 // store.dispatch() -- Lets the reducer know if something has happened in the application
 
+store.subscribe(() => {
+    console.log('Store Updated')
+})
 
-console.log(store.getState())
-
-console.log('Adding 10 Raymonds Tux')
-
+// console.log('Adding 10 Raymonds Tux')
 // store.dispatch(addSingleItemToCartAction) // This tells the reducer that this action has occured
 store.dispatch(addItemToCartAction(10, 'Raymonds Tux', 'ADD_CLOTH_TO_CART'))
-console.log(store.getState())
-
-console.log('Increasing cloth by 5')
+// console.log('State', store.getState())
+// console.log('Increasing cloth by 5')
 store.dispatch(increaseQtyAction(5, 'INCREASE_CLOTH_QTY'))
-console.log(store.getState())
+// console.log('State', store.getState())
 
-console.log('Increasing food by 5')
+// console.log('Increasing food by 5')
 store.dispatch(increaseQtyAction(5, 'INCREASE_FOOD_QTY'))
-console.log(store.getState())
+// console.log('State', store.getState())
