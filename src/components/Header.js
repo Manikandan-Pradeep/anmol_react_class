@@ -1,11 +1,16 @@
 import React from 'react'
 import './header.css'
-import { connect } from 'react-redux'
+import { connect, useSelector } from 'react-redux'
 
 class Header extends React.Component {
     constructor(props) {
         super(props)
     }
+
+    // functional equivalent
+    // const foodNo = useSelector((state) => {
+    //     return state.food.noOfFoods
+    // })
 
     render() {
         console.log('Header renders')
