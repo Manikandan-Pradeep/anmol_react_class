@@ -5,7 +5,6 @@ const initialState = {
 }
 
 const clothReducer = (state = initialState, action) => {
-
     switch(action.type) {
         case "ADD_CLOTH":
             return {

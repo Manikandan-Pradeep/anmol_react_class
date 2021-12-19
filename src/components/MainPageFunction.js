@@ -1,25 +1,56 @@
-import React, { useState } from 'react'
+import React, { useReducer } from 'react'
 import './mainpage.css'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
+const initialState = {
+    clothNo: 0,
+    foodNo: 0,
+    clothName: '',
+    foodName: ''
+}
+
+const reducer = (state, action) => {
+    switch(action.type) {
+        case 'CHANGE_CLOTH_NAME':
+            return {
+                ...state,
+                clothName: action.data.clothName
+            }
+        case 'CHANGE_CLOTH_NO':
+            return {
+                ...state,
+                clothNo: action.data.clothNo
+            }
+        case 'CHANGE_FOOD_NAME':
+            return {
+                ...state,
+                foodName: action.data.foodName
+            }
+        case 'CHANGE_FOOD_NO':
+            return {
+                ...state,
+                foodNo: action.data.foodNo
+            }
+        default:
+            return state
+    }
+}
 
 const MainPageFunction = (props) => {
-    const [clothName, setClothName] = useState('')
-    const [foodName, setfoodName] = useState('')
-    const [clothNo, setclothNo] = useState(0)
-    const [foodNo, setfoodNo] = useState(0)
 
-    // mapStateToProps -> useSelector
-    // mapDispatchToProps -> useDispatch
+    // const [clothName, setClothName] = useState('')
+    // const [foodName, setfoodName] = useState('')
+    // const [clothNo, setclothNo] = useState(0)
+    // const [foodNo, setfoodNo] = useState(0)
 
-    // const foodName = useSelector((state) => {
-    //     return state.food.foodName
-    // })
+    const [state, internalDispatch] = useReducer(reducer, initialState)
 
-    const dispatch = useDispatch()
+    const { clothName, foodName, clothNo, foodNo } = state
+
+    const reduxDispatch = useDispatch()
 
     const addCloth = (qty, name) => {
-        dispatch({
+        reduxDispatch({
             type: 'ADD_CLOTH',
             payload: {
                 qty: qty,
@@ -32,15 +63,25 @@ const MainPageFunction = (props) => {
         <div className="page">
             <div className="box cloth">
                 <img alt="cloth" src="https://images.pexels.com/photos/10397680/pexels-photo-10397680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></img>
-                <input value={clothName} onChange={(e) => setClothName(e.target.value)}></input>
-                <input type="number" value={clothNo} onChange={(e) => setclothNo(parseInt(e.target.value))}></input>
+                <input value={clothName} onChange={(e) => internalDispatch({
+                    type: 'CHANGE_CLOTH_NAME',
+                    data: {
+                        clothName: e.target.value
+                    }
+                })}></input>
+                <input type="number" value={clothNo} onChange={(e) => internalDispatch({
+                    type: 'CHANGE_CLOTH_NO',
+                    data: {
+                        clothNo: parseInt(e.target.value)
+                    }
+                })}></input>
                 <button onClick={() => {
                     if(clothName === '') {
-                        dispatch({
+                        reduxDispatch({
                             type: 'CHANGE_CLOTH_QTY',
                             payload: {
                                 qty: clothNo
-                            }
+                            }   
                         })
                     } else {
                         addCloth(clothNo, clothName)
@@ -50,18 +91,28 @@ const MainPageFunction = (props) => {
 
             <div className="box food">
                 <img alt="food" src="https://images.pexels.com/photos/704569/pexels-photo-704569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></img>
-                <input value={foodName} onChange={(e) => setfoodName(e.target.value)}></input>
-                <input type="number" value={foodNo} onChange={(e) => setfoodNo(parseInt(e.target.value))}></input>
+                <input value={foodName} onChange={(e) => internalDispatch({
+                    type: 'CHANGE_FOOD_NAME',
+                    data: {
+                        foodName: e.target.value
+                    }
+                })}></input>
+                <input type="number" value={foodNo} onChange={(e) => internalDispatch({
+                    type: 'CHANGE_FOOD_NO',
+                    data: {
+                        foodNo: parseInt(e.target.value)
+                    }
+                })}></input>
                 <button onClick={() => {
                     if(foodName === '') {
-                        dispatch({
+                        reduxDispatch({
                             type: 'CHANGE_FOOD_QTY',
                             payload: {
                                 qty: foodNo
                             }
                         })
                     } else {
-                        dispatch({
+                        reduxDispatch({
                             type: 'ADD_FOOD',
                             payload: {
                                 qty: foodNo,
@@ -70,7 +121,7 @@ const MainPageFunction = (props) => {
                         })
                     }
                 }}>Add to Cart</button>
-                <button onClick={() => dispatch({
+                <button onClick={() => reduxDispatch({
             type: "CHANGE_FOOD_DUMMY"
         })}>Change Dummy</button>
             </div>
