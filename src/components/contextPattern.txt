@@ -1,0 +1,33 @@
+globalStore context value=''
+
+provider
+consumer
+
+
+const [store, dispatch] = useReducer(reducer, {
+    name,
+    age,
+    firstnam,
+    lastname
+})
+
+<GlobalStore.Provider value={{
+    store: store,
+    dispatch: dispatch
+}}>
+    <App>
+<GlobalStore.Provider/>
+
+
+<GlobalStore.Consumer>
+    {
+        (value) => {
+            return <div>{value}</div>
+        }
+    }
+</GlobalStore.Consumer>
+
+value.store
+value.dispatch({
+    type
+})
